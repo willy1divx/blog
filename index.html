@@ -19,15 +19,16 @@
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
 	<body id="body" class="container">
-		<div class="col-xs-12 text-center" id="box">
+		<div class="col-md-12 text-center" id="box">
 			<h1>ENTER YOUR USER I.D.</h1>
 			<Input type="text" id="userId" size="4">
 			<h1> write comments here</h1>
 			<textarea type="text" id="comment"  rows="4" cols="50"></textarea>
 			<br>
-			<button class="btn btn-lg btn-warning" onClick="addComment()">post</button>
+			<button class="btn btn-md btn-warning" onClick="addComment()">post</button>
+			<button class="btn btn-md btn-success" onClick="hideComment()" id="hide">hide comment</button>
 		</div>
-		<div class="col-xs-12 text-center container-fliud" id="main">
+		<div class="col-md-12 text-center" id="master">
 			
 		</div>
 

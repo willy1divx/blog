@@ -1,57 +1,34 @@
-
-
-
-
-
+var count = 0;
+var main = "main";
 		
-// 		var p = document.createElement('p');
-// 		var header = document.createElement('h1');
-// 		var whatever = document.createElement('body');
-// 		var img = document.createElement('img');
-
-// // create text
-// 		var ptext = document.createTextNode("this is a p tag");
-// 		var headertext = document.createTextNode("this is a h tag");
-
-// 		img.src = "https://www.google.com/search?q=image&espv=2&biw=1366&bih=662&source=lnms&tbm=isch&sa=X&ved=0ahUKEwj62578kOjRAhVPVWMKHSNkAR8Q_AUIBigB#imgrc=TJR1QKD1ztBW8M%3A";
-
-// 		p.appendChild(ptext);
-// 		header.appendChild(headertext);
-// 		p.className = "blue";
-
-// 		var link = document.createElement('a'); 
-// 		link.href="google.com";
-// 		link.textContent = "click me"
-		
-
-
-		// whatever.appendChild(p);
-		// whatever.appendChild(img);
-		// whatever.appendChild(header);
-
-
-		var count = 0;
-		var years = new Date();
-		var months = new Date();
-		var days = new Date();
-		var hours = new Date();
-		var minutes = new Date();
 function addComment (){
+	var years = new Date();
+	var months = new Date();
+	var days = new Date();
+	var hours = new Date();
+	var minutes = new Date();
 	year = years.getFullYear();
 	month = months.getMonth() + 1;
 	day = days.getDate();
 	hour = hours.getHours();
 	minute = minutes.getMinutes();
-	correctMinute(minute);
-	date = month + " / " + day + " / " + year + "    Time: " + hour + ":" + minute; 
+	mint = fixMinute(minute);
+	date = month + " /" + day + "/" + year + "    Time: " + hour + ":" + mint; 
 	count += 1;
 	if ( count % 2 == 0){
 		// blue text
 	var userId = document.getElementById('userId').value;
 	var comment = document.getElementById('comment').value;
+	divTree = document.createElement('div');
+	master = document.getElementById("master");
+	master.appendChild(divTree);
+	main = count;
+	divId = main + "div";
+	divTree.setAttribute('id', divId);
+	divTree.setAttribute('class', "col-md-12 text-center");
 	appendPicture(userId);
 	var h3 = document.createElement('h3');
-	var mainDiv = document.getElementById("main");
+	var mainDiv = document.getElementById(divId);
 	mainDiv.appendChild(h3);
 	var uText = document.createTextNode("COMMENT: "+comment);
 	h3.appendChild(uText);
@@ -71,13 +48,23 @@ function addComment (){
 	 deleteText = document.createTextNode("DELETE");
 	 deleteButton.appendChild(deleteText);
 	 deleteButton.className = 'greenText'
+	 deleteButton.setAttribute('id', main);
+	 deleteButton.setAttribute('onclick',"deleteComment()");
+
 }
 	if (count % 2 == 1 ){
 	var userId = document.getElementById('userId').value;
 	var comment = document.getElementById('comment').value;
+	divTree = document.createElement('div');
+	master = document.getElementById("master");
+	master.appendChild(divTree);
+	main = count;
+	divId = main + "div";
+	divTree.setAttribute('id', divId);
+	divTree.setAttribute('class', "col-md-12 text-center");
 	appendPicture(userId);
 	var h3 = document.createElement('h3');
-	var mainDiv = document.getElementById("main");
+	var mainDiv = document.getElementById(divId);
 	mainDiv.appendChild(h3);
 	var uText = document.createTextNode("COMMENT: "+comment);
 	h3.appendChild(uText);
@@ -94,6 +81,8 @@ function addComment (){
 	 deleteText = document.createTextNode("DELETE");
 	 deleteButton.appendChild(deleteText);
 	 deleteButton.className = 'white'
+	 deleteButton.setAttribute('id', main);
+	 deleteButton.setAttribute('onclick',"deleteComment()");
 
 	}
 	
@@ -104,36 +93,32 @@ function appendPicture(userId){
 	if (userId.toLowerCase() == "william"){
 		var image = document.createElement('img');
 		image.setAttribute('src', 'img/libra.jpg');
-		var mainBox = document.getElementById('main')
+		var mainBox = document.getElementById(divId)
 		mainBox.appendChild(image);
 		return;
 	} else {
 		var image = document.createElement('img');
 		image.setAttribute('src', 'img/happyface.png');
-		var mainBox = document.getElementById('main')
+		var mainBox = document.getElementById(divId)
 		mainBox.appendChild(image);
 	}
 }
 
-function correctMinute(minute){
+function fixMinute(minute){
 	if (minute < 10 ){
-		minute = "0"+ minute.toString();
+		minute = minute.toString();
+		minute = "0" + minute;
+		console.log(minute);
 		return minute;
 	}
-	return;
+	return minute;
 }
 
+function deleteComment(){
+	number = this.deleteButton.id;
+	val = number+"div";
+	console.log(val);
+	var childNode = document.getElementById(val);
+	childNode.remove(childNode);
+}
 
-
-
-
-	// var text = document.createTextNode(newTask);
-	// var newElement = document.createElement("li");
-	// var newElementAndText = newElement.appendChild(text);
-	// var node = document.getElementById('list');
-	// node.appendChild(newElementAndText);
-
-
-
-
-		
