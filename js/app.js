@@ -1,6 +1,7 @@
 var count = 0;
 var main = "main";
-		
+var oneDeleteButton = 0;
+var opaque = 0;
 function addComment (){
 	var years = new Date();
 	var months = new Date();
@@ -43,14 +44,23 @@ function addComment (){
 	 var cDate = document.createTextNode("DATE: "+date);
 	 datee.appendChild(cDate);
 	 datee.className = "green"
-	 deleteButton = document.createElement("button");
-	 p.appendChild(deleteButton);
-	 deleteText = document.createTextNode("DELETE");
-	 deleteButton.appendChild(deleteText);
-	 deleteButton.className = 'greenText'
-	 deleteButton.setAttribute('id', main);
-	 deleteButton.setAttribute('onclick',"deleteComment()");
-
+	 if (oneDeleteButton < 1 ){
+		 deleteButton = document.createElement("button");
+		 p.appendChild(deleteButton);
+		 deleteText = document.createTextNode("DELETE LAST COMMENT");
+		 deleteButton.appendChild(deleteText);
+		 deleteButton.className = 'greenText'
+		 deleteButton.setAttribute('id', main);
+		 oneDeleteButton = oneDeleteButton + 1
+     }
+	 $('#'+main).click(function(){
+	 		$('#'+main+'div').remove();
+	 		main = main - 1;
+	 		count = count - 1;
+	 		if (main == 0){
+	 			oneDeleteButton = 0;
+	 		}
+		});
 }
 	if (count % 2 == 1 ){
 	var userId = document.getElementById('userId').value;
@@ -76,15 +86,23 @@ function addComment (){
 	 mainDiv.appendChild(datee);
 	 var cDate = document.createTextNode("DATE: "+date);
 	 datee.appendChild(cDate);
+	 if (oneDeleteButton < 1 ){
 	 deleteButton = document.createElement("button");
 	 p.appendChild(deleteButton);
-	 deleteText = document.createTextNode("DELETE");
+	 deleteText = document.createTextNode("DELETE LAST COMMENT");
 	 deleteButton.appendChild(deleteText);
 	 deleteButton.className = 'white'
 	 deleteButton.setAttribute('id', main);
-	 deleteButton.setAttribute('onclick',"deleteComment()");
-
+	 oneDeleteButton = oneDeleteButton + 1;
 	}
+	 $('#'+main).click(function(){
+	 		$('#'+main+'div').remove();
+	 		main = main - 1;
+	 		count = count - 1;
+	 		if (main == 0){
+	 			oneDeleteButton = 0;
+	 		}
+	});
 	
 	
 }
@@ -113,12 +131,9 @@ function fixMinute(minute){
 	}
 	return minute;
 }
-
-function deleteComment(){
-	number = this.deleteButton.id;
-	val = number+"div";
-	console.log(val);
-	var childNode = document.getElementById(val);
-	childNode.remove(childNode);
 }
+
+	$("#hide").click(function(){
+    $("#master").toggle();
+});
 

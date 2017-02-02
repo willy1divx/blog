@@ -3,11 +3,17 @@
 	height: 300px;
 	background-color: blue;
 	margin: auto;
+	border: 2px solid black;
+	border-bottom: none;
+}
+
+#master {
+	border: 2px solid black;
+	border-top: 1px solid black;
 }
 
 
 h3 {
-	
 	color: blue;
 	margin: auto;
 }
@@ -29,7 +35,7 @@ h3 {
 p {
 	background-color: gray
 	border: 1px solid black;
-	margin: 0;
+	margin:0;
 	padding: 0;
 	}
 
@@ -45,12 +51,19 @@ delete {
 	color: green;
 	float: right;
 	margin-bottom: 20px;
+	position: relative;
+	bottom: 0px;
+	right: 0px;
+
 }
 
 .white {
 	color: green;
 	float: right;
 	margin-bottom: 20px;
+	position: relative;
+	bottom: 0px;
+	right: 0px;
 }
 
 img {
@@ -60,5 +73,4 @@ img {
 	width: 50px;
 	background-color: gray;
 }
-
 
