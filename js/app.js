@@ -17,7 +17,7 @@ function addComment (){
 	mint = fixMinute(minute);
 	date = month + " /" + day + "/" + year + "    Time: " + hour + ":" + mint; 
 	count += 1;
-	picture = Math.floor(Math.random() * 9) + 1;
+	picture = Math.floor(Math.random() * 24) + 1;
 	images = 'img/' + picture + '.jpg';
 	$('#body').attr("background", images);
 	if ( count % 2 == 0){
@@ -65,6 +65,7 @@ function addComment (){
 	 			oneDeleteButton = 0;
 	 		}
 		});
+
 }
 	if (count % 2 == 1 ){
 	var userId = document.getElementById('userId').value;
